@@ -2,8 +2,9 @@
 # coding: utf-8
 
 
-get_ipython().run_line_magic('env', 'GOOGLE_API_KEY=AIzaSyB3WX56Uk7po6i83hcdaG6xjs9trsjdubQ')
-
+#get_ipython().run_line_magic('env', 'GOOGLE_API_KEY=AIzaSyB3WX56Uk7po6i83hcdaG6xjs9trsjdubQ')
+import os
+os.environ['GOOGLE_API_KEY'] = 'AIzaSyB3WX56Uk7po6i83hcdaG6xjs9trsjdubQ'
 
 import pathlib
 import textwrap
