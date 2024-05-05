@@ -19,9 +19,22 @@ import subprocess
 # plus recovery_automation.py ko bhi change krna padega 
 def run_jupyter_notebook(csv_path):
     # Run the Jupyter notebook
-    notebook_file = "Recovery_Automation.ipynb"
+    #notebook_file = "Recovery_Automation.ipynb"
     # Execute the notebook with papermill
-    os.system(f'jupyter nbconvert --execute {notebook_file} --ExecutePreprocessor.timeout=180 --to notebook --output {notebook_file} --execute "{csv_path}"')
+    #os.system(f'jupyter nbconvert --execute {notebook_file} --ExecutePreprocessor.timeout=180 --to notebook --output {notebook_file} --execute "{csv_path}"')
+    
+    #Mene .py ko execute kiya
+    #par isme vulnerability ka error aa raha hai, keyword=vulnearbility 
+    py_path = "Recovery_Automation.py"  # Path to the converted Python script
+    output_path = "recovery-automation-tool-main"  # Adjust the output path as needed
+    with open(output_path, "w", encoding="utf-8") as output_file:
+        completed_process = subprocess.run(['python', py_path, csv_path], stdout=output_file, stderr=subprocess.PIPE, text=True)
+        if completed_process.returncode == 0:
+            print("Notebook executed successfully!")
+            print(f"You can find the output in '{output_path}'")
+        else:
+            print("Notebook execution failed. Check the error logs for details.")
+            print("Error:", completed_process.stderr) 
 
 def main():
     print("Welcome to Recover Function")
